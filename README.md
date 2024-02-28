@@ -73,6 +73,7 @@ Ensure that you have configured the following properties in your `application.pr
 spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
 spring.datasource.username=your_database_username
 spring.datasource.password=your_database_password
+```
 
 # Kafka Configuration
 spring.kafka.bootstrap-servers=localhost:9092
