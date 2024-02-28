@@ -8,33 +8,33 @@ import (
 
 func main() {
 	for true {
-	  fmt.Println("\nEnter your choice: \n1. Add details of GIT users to DATABASE \n2. Display all details \n3. DELETE details of git users")
-	  var ch int;
-	  fmt.Scanln(&ch)
-	  switch ch {
-	  case 1:
-	    fmt.Println("Enter the user name ")
-	    var usrname string
-	    fmt.Scanln(&usrname)
-	    SendMessage(usrname)
-	    break
-	  case 2:
-	    SendMessage("all")
-	    break
-	  case 3:
-	    fmt.Println("Enter the user ID of the user")
-	    var id string
-	    fmt.Scanln(&id)
-	    deleteMessage(id)
-	    break
-	  default:
-	    return
-	  }
+		fmt.Println("\nEnter your choice: \n1. Add details of GIT users to DATABASE \n2. Display all details \n3. DELETE details of git users")
+		var ch int
+		fmt.Scanln(&ch)
+		switch ch {
+		case 1:
+			fmt.Println("Enter the user name ")
+			var usrname string
+			fmt.Scanln(&usrname)
+			SendMessage(usrname)
+			break
+		case 2:
+			SendMessage("all")
+			break
+		case 3:
+			fmt.Println("Enter the user ID of the user")
+			var id string
+			fmt.Scanln(&id)
+			deleteMessage(id)
+			break
+		default:
+			return
+		}
 	}
 
 }
 
-func SendMessage(message string){
+func SendMessage(message string) {
 	config := sarama.NewConfig()
 	config.Producer.RequiredAcks = sarama.WaitForAll
 	config.Producer.Retry.Max = 5
@@ -67,8 +67,7 @@ func SendMessage(message string){
 
 }
 
-
-func deleteMessage(message string){
+func deleteMessage(message string) {
 	config := sarama.NewConfig()
 	config.Producer.RequiredAcks = sarama.WaitForAll
 	config.Producer.Retry.Max = 5
