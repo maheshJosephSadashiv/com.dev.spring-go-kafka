@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("kafka")
 public class KafkaProducer {
 	@Autowired
-	private KafkaTemplate<String,String> kafkaTemplate;
-	
-	KafkaProducer(){}
-	
-	public void post(String message) {
-		kafkaTemplate.send("ResultTopic",message);
+	private KafkaTemplate<String, String> kafkaTemplate;
+
+	KafkaProducer() {
 	}
-	
+
+	public void post(String message) {
+		kafkaTemplate.send("ResultTopic", message);
+	}
+
 }

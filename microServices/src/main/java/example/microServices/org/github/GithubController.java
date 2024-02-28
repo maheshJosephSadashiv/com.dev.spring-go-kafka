@@ -11,29 +11,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GithubController {
-	
+
 	@Autowired
 	private GithubService githubService;
-	
-	@RequestMapping(value = "/users/{name}",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
 	public Github getGitDetails(@PathVariable String name) throws IOException {
 		return githubService.getDetails(name);
 	}
-	
-	@RequestMapping(value = "/users/data",method = RequestMethod.GET)
-	List<Github> getAllGitDetails(){
+
+	@RequestMapping(value = "/users/data", method = RequestMethod.GET)
+	List<Github> getAllGitDetails() {
 		return githubService.getAllDetails();
 	}
-	
-	@RequestMapping(value = "/users/data/{id}",method = RequestMethod.GET)
-	Github getSpecificGitDetails(@PathVariable long id){
+
+	@RequestMapping(value = "/users/data/{id}", method = RequestMethod.GET)
+	Github getSpecificGitDetails(@PathVariable long id) {
 		return githubService.getSpecificDetails(id);
 	}
-	
-	@RequestMapping(value = "/users/data/{id}",method = RequestMethod.DELETE)
-	void deleteSpecificGitDetails(@PathVariable long id){
-		 githubService.deleteSpecificDetails(id);
+
+	@RequestMapping(value = "/users/data/{id}", method = RequestMethod.DELETE)
+	void deleteSpecificGitDetails(@PathVariable long id) {
+		githubService.deleteSpecificDetails(id);
 	}
-	
-	
+
 }

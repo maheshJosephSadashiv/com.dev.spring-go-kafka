@@ -16,33 +16,30 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GithubService {
-	
-	
-	@Autowired
-	private GithubRepository githubRepository ;
-	
 
+	@Autowired
+	private GithubRepository githubRepository;
 
 	public Github getDetails(String userName) throws IOException {
 		HttpURLConnection httpcon = null;
 		try {
-			httpcon = (HttpURLConnection) new URL("https://api.github.com/users/"+userName).openConnection();
+			httpcon = (HttpURLConnection) new URL("https://api.github.com/users/" + userName).openConnection();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		httpcon.addRequestProperty("User-Agent", "Mozilla/5.0");
-		BufferedReader in  = new BufferedReader(new InputStreamReader(httpcon.getInputStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(httpcon.getInputStream()));
 		StringBuilder responseSB = new StringBuilder();
 		String line;
-		while ( ( line = in.readLine() ) != null) {
+		while ((line = in.readLine()) != null) {
 			responseSB.append("\n" + line);
 		}
 		in.close();
 		Github json = new Gson().fromJson(responseSB.toString(), Github.class);
 		githubRepository.save(json);
-		
+
 		return json;
 	}
 
@@ -52,16 +49,13 @@ public class GithubService {
 		return githubList;
 	}
 
-	public Github getSpecificDetails(long id) {		
+	public Github getSpecificDetails(long id) {
 		return githubRepository.findOne(id);
 	}
-	
+
 	public void deleteSpecificDetails(long id) {
 		githubRepository.delete(id);
-		
+
 	}
-	
-	
-	
 
 }
