@@ -11,9 +11,7 @@ func main() {
 	config := sarama.NewConfig()
 	config.Consumer.Return.Errors = true
 
-
 	brokers := []string{"localhost:9092"}
-
 
 	master, err := sarama.NewConsumer(brokers, config)
 	if err != nil {
@@ -33,8 +31,7 @@ func main() {
 		panic(err)
 	}
 
-
-	for message := range consumer.Messages(){
-	fmt.Printf("Message claimed: value = %s, offset : %d, topic = %s \n\n\n", string(message.Value), sarama.OffsetOldest, message.Topic)
-}
+	for message := range consumer.Messages() {
+		fmt.Printf("Message claimed: value = %s, offset : %d, topic = %s \n\n\n", string(message.Value), sarama.OffsetOldest, message.Topic)
+	}
 }
