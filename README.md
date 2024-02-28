@@ -75,7 +75,7 @@ spring.datasource.username=your_database_username
 spring.datasource.password=your_database_password
 ```
 
-# Kafka Configuration
+## Kafka Configuration
 spring.kafka.bootstrap-servers=localhost:9092
 
 ## Contributing
